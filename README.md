@@ -22,14 +22,21 @@ set node v5.4.1 as server default
 > nvm alias default v5.4.1
 
 clone repo
-> git clone https://github.com/claytonsmith/pcaso
-> cd pcaso
+> git clone https://github.com/codeMyDNA/Pcaso
+> cd Pcaso
 
 install app dependencies 
 > npm install
 
-When running on a server, install forever to keep the server alive forever
-> npm install -g forever
+Note: npm install errors on Mac OS, due to some node-gyp problem:
+```
+gyp: Call to './util.sh png16' returned exit status 0 while in binding.gyp. while trying to load binding.gyp
+```
+
+When running on a server, install forever (with specific dependency for compatibility)
+> npm -g install forever deep-equal@1.1.1
+
+(Note: forever still throws an error when running and terminates the server)
 
 ### Setup 
 configure the app's secrets in `config/secrets.js`
