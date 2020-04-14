@@ -28,7 +28,6 @@ node-gd is dependent on libgd and pkg-config. Install Pkg-config, GD, and node-g
 
 `npm install -g node-gyp`
 
-?Follow the instructions at [https://github.com/nodejs/node-gyp#on-macos](https://github.com/nodejs/node-gyp#on-macos)?
 
 #### Then (everywhere):
 
