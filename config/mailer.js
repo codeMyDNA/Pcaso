@@ -63,7 +63,7 @@ function MailClient( client ){
     
     // Create a SMTP transporter object
     var transport   =  nodemailer.createTransport({
-	host: 'smtpout.secureserver.net', 
+	host: 'mail.stolte.design', 
 	port: 465, 
 	auth: config.secrets.emailCredentials[ client ],
 	secure: true

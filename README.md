@@ -14,24 +14,36 @@ Set nodejs to node
 > sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 install nvm
-> curl https://raw.githubusercontent.com/creationix/nvm/v0.16.1/install.sh | sh
 
-> nvm install v5.4.1
+> curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
 
-set node v5.4.1 as server default
-> nvm alias default v5.4.1
 
-clone repo
-> git clone https://github.com/codeMyDNA/Pcaso
-> cd Pcaso
+Install node version and set as server default
+
+`$ nvm install v5.4.1` => `$ nvm install v12.16.1`
+
+`nvm alias default v5.4.1` => `nvm alias default v12.16.1`
+
+node-gd is dependent on libgd and pkg-config. Install Pkg-config, GD, and node-gyp:
+
+`brew install pkg-config`
+
+`brew install gd`
+
+`npm install -g node-gyp`
+
+Follow the instructions at [https://github.com/nodejs/node-gyp#on-macos](https://github.com/nodejs/node-gyp#on-macos)
+
+
+#### Clone repo
+
+`git clone https://github.com/codeMyDNA/Pcaso`
+
+`cd Pcaso`
 
 install app dependencies 
 > npm install
 
-Note: npm install errors on Mac OS, due to some node-gyp problem:
-```
-gyp: Call to './util.sh png16' returned exit status 0 while in binding.gyp. while trying to load binding.gyp
-```
 
 When running on a server, install forever (with specific dependency for compatibility)
 > npm -g install forever deep-equal@1.1.1
@@ -112,11 +124,17 @@ module.exports = {
 
 ### Starting the server
 
+#### Start mongoDB
+
+> mongod --bind_ip 127.0.0.1 
+
+#### Start Pcaso server
+
 > nohup forever start -c "node --harmony_proxies" server.js &
 
 OR
 
-> node --harmony_proxies" server.js
+> node --harmony server.js
 
 
 By default, the server will run on port 8080. 

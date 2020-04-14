@@ -3,11 +3,11 @@
 var nodemailer = require('nodemailer');
 // Create a SMTP transporter object
 var transporter = nodemailer.createTransport(
-    { host: 'smtpout.secureserver.net', 
+    { host: 'mail.stolte.design', 
       port: 465, 
       auth: {
-          user: 'mail@pcaso.io',
-          pass: 'lego2020.Gulch'
+          user: 'pcaso@stolte.design',
+          pass: 'RS5kYdVBa4E%'
       },
       
       secure: true
@@ -20,11 +20,11 @@ console.log('SMTP Configured');
 var message = {
 
     // sender info
-    from: 'Pcaso Authentication Service <mail@pcaso.io>',
+    from: 'Pcaso Authentication Service <pcaso@stolte.design>',
     
     // Comma separated list of recipients
     //to: '"Clayton Smith" <clayton_smith@student.uml.edu>, "Nathaniel Pearson" <nathaniel.pearson@gmail.com>',
-    to: '"Clayton Smith" <clayton_smith@student.uml.edu>',// "Nathaniel Pearson" <nathaniel.pearson@gmail.com>',
+    to: '"Christian Stolte" <christian.stolte@gmail.com>',// "Nathaniel Pearson" <nathaniel.pearson@gmail.com>',
     
     // Subject of the message
     subject: "First automated email", //

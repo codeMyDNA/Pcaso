@@ -4,7 +4,7 @@ MOCHA := node_modules/.bin/mocha
 
 SRC      = $(shell find app/ -name "*.js" -type f | sort)
 SUPPORT  = $(wildcard support/*.js)
-FLAGS    = --growl --harmony_proxies
+FLAGS    = --growl --harmony
 
 
 lint:
