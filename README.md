@@ -5,10 +5,33 @@
 
 ### Installation
 
+#### Linux
 
 > curl -sL https://deb.nodesource.com/setup | sudo bash -
 
 > sudo apt-get install git nodejs mongodb build-essential npm build-essential libssl-dev libgd2-xpm-dev
+
+#### Mac OS X
+
+- Install Xcode (including command line tools)
+- Install Homebrew (follow the [official instructions](https://brew.sh/#install))
+- Install MongoDB Community Edition (in case of trouble [see the official guide](https://docs.mongodb.com/manual/tutorial/install-mongodb-on-os-x/)):
+> brew tap mongodb/brew
+
+> brew install mongodb-community@4.2
+
+node-gd is dependent on libgd and pkg-config. Install Pkg-config, GD, and node-gyp:
+
+`brew install pkg-config`
+
+`brew install gd`
+
+`npm install -g node-gyp`
+
+?Follow the instructions at [https://github.com/nodejs/node-gyp#on-macos](https://github.com/nodejs/node-gyp#on-macos)?
+
+#### Then (everywhere):
+
 
 Set nodejs to node
 > sudo ln -s /usr/bin/nodejs /usr/bin/node
@@ -20,19 +43,9 @@ install nvm
 
 Install node version and set as server default
 
-`$ nvm install v5.4.1` => `$ nvm install v12.16.1`
+`$ nvm install v12.13.1`
 
-`nvm alias default v5.4.1` => `nvm alias default v12.16.1`
-
-node-gd is dependent on libgd and pkg-config. Install Pkg-config, GD, and node-gyp:
-
-`brew install pkg-config`
-
-`brew install gd`
-
-`npm install -g node-gyp`
-
-Follow the instructions at [https://github.com/nodejs/node-gyp#on-macos](https://github.com/nodejs/node-gyp#on-macos)
+`nvm alias default v12.13.1`
 
 
 #### Clone repo
@@ -45,13 +58,10 @@ install app dependencies
 > npm install
 
 
-When running on a server, install forever (with specific dependency for compatibility)
-> npm -g install forever deep-equal@1.1.1
-
-(Note: forever still throws an error when running and terminates the server)
-
 ### Setup 
-configure the app's secrets in `config/secrets.js`
+Create two new files in the `config` directory: `auth.js` and `secrets.js`
+
+Configure the app's secrets in `config/secrets.js`
 
 ```
 'use strict'
@@ -130,18 +140,11 @@ module.exports = {
 
 #### Start Pcaso server
 
-> nohup forever start -c "node --harmony_proxies" server.js &
-
-OR
-
 > node --harmony server.js
-
 
 By default, the server will run on port 8080. 
 
 
-Setting environment variables:
-> NODE_ENV=production NODE_COOL_ENVAR=awesome node --harmony_proxies" server.js
 
 
 
